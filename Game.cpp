@@ -163,23 +163,19 @@ void Game::update(sf::Time elapsedTime){
 		return;
 	}
 
-	// Update mario movements
 	this->updatePlayer(elapsedTime);
 
-	// Update camera position
 	this->updateCamera();
 
-	// Update stats
 	this->updateStatistics();
 
-	// Update monsters
 	this->updateMonsters(elapsedTime);
 
-	// Update princess
 	this->updatePrincess();
 }
 
 void Game::updateMonsters(sf::Time elapsedTime) {
+	
 	for (std::shared_ptr<Monster> monster : this->monsters) {
 		
 		monster->updatePosition(elapsedTime, this->blocks);
@@ -244,7 +240,9 @@ void Game::updateStatistics(){
 			coinsPickedUp++;
 		}
 	}
-	std::string statsString = "Coins: " + std::to_string(coinsPickedUp);
+	std::string statsString = 
+		"Coins: " + std::to_string(coinsPickedUp) + "/" + std::to_string(coins.size()) +
+		 "\t|\tLevel: " + std::to_string(this->currentMap + 1) + "/" + std::to_string(this->maps.size());
 	this->statsText.setString(statsString);
 
 	this->statsText.setPosition(
