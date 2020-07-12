@@ -4,6 +4,8 @@
 #include "Game.h"
 #include "Block.h"
 #include "Mario.h"
+#include "Monster.h"
+#include "Princess.h"
 
 Level::Level(std::vector<std::string> map) {
 	this->map = map;
@@ -22,8 +24,11 @@ Level::Level(std::vector<std::string> map) {
 
 	this->baseEntitySize = (float)(Game::windowHeight / mapBlockHeight);
 
-	this->mapPixelsHeight = (size_t)(this->mapBlockHeight * this->baseEntitySize);
-	this->mapPixelsWidth = (size_t)(this->mapBlockWidth * this->baseEntitySize);
+	this->mapRect.left = 0.0f;
+	this->mapRect.top = 0.0f;
+
+	this->mapRect.height = (size_t)(this->mapBlockHeight * this->baseEntitySize);
+	this->mapRect.width = (size_t)(this->mapBlockWidth * this->baseEntitySize);
 
 }
 
@@ -58,27 +63,34 @@ std::vector<std::shared_ptr<Entity>> Level::create() {
 
 		for (char const &c : line) {
 
-			std::shared_ptr<Entity> entity;
+			std::shared_ptr<Entity> entity = nullptr;
 
 			switch (c) {
 
 				case '#':
 					entity = std::make_shared<Block>();
-					scaleAndPositionEntity(entity);
-					entities.push_back(entity);
 					break;
 
 				case 'p':
 					entity = std::make_shared<Mario>();
-					scaleAndPositionEntity(entity);
-					entities.push_back(entity);
 					break;
 
 				case 'o':
 					entity = std::make_shared<Coin>();
-					scaleAndPositionEntity(entity);
-					entities.push_back(entity);
 					break;
+
+				case 'm':
+					entity = std::make_shared<Monster>();
+					break;
+
+				case 'e':
+					entity = std::make_shared<Princess>();
+					break;
+			}
+
+			if (entity != nullptr) {
+				scaleAndPositionEntity(entity);
+				entities.push_back(entity);
 			}
 			
 			columnIndex++;

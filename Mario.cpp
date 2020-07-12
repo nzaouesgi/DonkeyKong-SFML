@@ -16,7 +16,6 @@ Mario::Mario(){
 	this->yVelocity = Mario::mainVelocity;
 	this->jumpClock.restart();
 	this->jumping = false;
-	this->isMoving = false;
 	this->orientation = MarioOrientation::RIGHT;
 
 	if (this->leftTexture.loadFromFile(MARIO_LEFT_TEXTURE_PATH) == false) {
@@ -40,8 +39,7 @@ Mario::Mario(){
 
 }
 
-Mario::~Mario(){
-}
+Mario::~Mario(){}
 
 
 void Mario::moveLeft(){
@@ -93,12 +91,14 @@ void Mario::updatePosition(sf::Time elapsedTime, std::vector<std::shared_ptr<Blo
 	float seconds = elapsedTime.asSeconds();
 
 	this->sprite.move(0, this->yVelocity * seconds);
+	
 	if (this->checkBlockCollision(blocks)) {
+		
 		this->sprite.move(0, -(this->yVelocity * seconds));
+		
 		if (this->yVelocity < 0) {
 			this->yVelocity = (Mario::mainVelocity);
-		}
-		else {
+		} else {
 			this->stopJumping();
 		}
 	}
@@ -124,7 +124,20 @@ void Mario::pickCoin(std::vector<std::shared_ptr<Coin>> coins){
 			coin->pickUp();
 		}
 	}
+}
 
+void Mario::savePrincess(std::shared_ptr<Princess> princess) {
+	if (princess->sprite.getGlobalBounds().intersects(this->sprite.getGlobalBounds())) {
+		princess->save();
+	}
+}
+
+bool Mario::hasFallen(sf::FloatRect mapRect)
+{
+	if (mapRect.intersects(this->sprite.getGlobalBounds()))
+		return false;
+
+	return true;
 }
 
 bool Mario::checkBlockCollision(std::vector<std::shared_ptr<Block>> blocks) {

@@ -16,8 +16,7 @@ Coin::Coin(){
 
 Coin::~Coin(){}
 
-bool Coin::isPickedUp()
-{
+bool Coin::isPickedUp(){
 	return this->pickedUp;
 }
 

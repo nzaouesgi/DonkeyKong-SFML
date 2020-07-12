@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "Block.h"
 #include "Coin.h"
+#include "Princess.h"
 
 enum MarioOrientation {
 	LEFT, RIGHT
@@ -23,6 +24,8 @@ public:
 	void updatePosition(sf::Time elapsedTime, std::vector<std::shared_ptr<Block>> blocks);
 	void updateState();
 	void pickCoin(std::vector<std::shared_ptr<Coin>> coins);
+	void savePrincess(std::shared_ptr<Princess> princess);
+	bool hasFallen(sf::FloatRect mapRect);
 
 private:
 
@@ -43,5 +46,4 @@ private:
 	sf::Texture rightRunningTexture;
 
 	MarioOrientation orientation;
-	bool isMoving;
 };

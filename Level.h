@@ -9,8 +9,7 @@ public:
 	Level(std::vector<std::string> map);
 	~Level();
 
-	size_t mapPixelsHeight;
-	size_t mapPixelsWidth;
+	sf::FloatRect mapRect;
 
 	size_t mapBlockHeight;
 	size_t mapBlockWidth;

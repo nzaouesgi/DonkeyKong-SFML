@@ -5,8 +5,7 @@ Camera::Camera(sf::View view){
 	this->view = view;
 }
 
-Camera::~Camera(){
-}
+Camera::~Camera(){}
 
 sf::View Camera::updatePosition(sf::Vector2f mapBorders, float playerXPosition){
 

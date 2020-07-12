@@ -4,14 +4,15 @@ enum EntityType
 {
 	PLAYER,
 	BLOCK,
-	COIN
+	COIN,
+	MONSTER,
+	PRINCESS
 };
 
 class Entity
 {
 public:
-	Entity() { };
-	virtual ~Entity() { };
+	virtual ~Entity() {};
 
 public:
 	sf::Sprite sprite;
