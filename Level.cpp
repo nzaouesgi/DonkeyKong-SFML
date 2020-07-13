@@ -11,7 +11,7 @@ Level::Level(std::vector<std::string> map) {
 	this->map = map;
 
 	if (this->map.size() == 0) {
-		throw new std::runtime_error("Bad map format");
+		throw std::runtime_error("Bad map format");
 	}
 
 	this->mapBlockHeight = map.size();

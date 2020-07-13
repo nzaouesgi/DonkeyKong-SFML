@@ -12,10 +12,10 @@ const float Monster::mainVelocity = 0.10f * (Game::windowWidth);
 Monster::Monster(){
 
 	if (this->leftTexture.loadFromFile(MONSTER_LEFT_TEXTURE) == false) {
-		throw new std::runtime_error("Could not load monster texture");
+		throw std::runtime_error("Could not load monster texture");
 	}
 	if (this->rightTexture.loadFromFile(MONSTER_RIGHT_TEXTURE) == false) {
-		throw new std::runtime_error("Could not load monster texture");
+		throw std::runtime_error("Could not load monster texture");
 	}
 
 	this->xVelocity = Monster::mainVelocity;

@@ -5,7 +5,7 @@
 
 Block::Block(){
 	if (this->blockTexture.loadFromFile(BLOCK_TEXTURE_PATH) == false) {
-		throw new std::runtime_error("could not load block texture");
+		throw std::runtime_error("could not load block texture");
 	}
 	this->type = EntityType::BLOCK;
 	this->sprite.setTexture(this->blockTexture);

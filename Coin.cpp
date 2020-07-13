@@ -8,7 +8,7 @@ Coin::Coin(){
 	this->pickedUp = false;
 
 	if (this->coinTexture.loadFromFile(COIN_TEXTURE_PATH) == false) {
-		throw new std::runtime_error("could not load block texture");
+		throw std::runtime_error("could not load block texture");
 	}
 	this->type = EntityType::COIN;
 	this->sprite.setTexture(this->coinTexture);

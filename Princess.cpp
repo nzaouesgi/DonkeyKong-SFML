@@ -8,7 +8,7 @@
 Princess::Princess(){
 
 	if (this->princessTexture.loadFromFile(PRINCESS_TEXTURE_PATH) == false) {
-		throw new std::runtime_error("Could not load princess texture");
+		throw std::runtime_error("Could not load princess texture");
 	}
 
 	this->saved = false;

@@ -19,15 +19,15 @@ Mario::Mario(){
 	this->orientation = MarioOrientation::RIGHT;
 
 	if (this->leftTexture.loadFromFile(MARIO_LEFT_TEXTURE_PATH) == false) {
-		throw new std::runtime_error("could not load player texture");
+		throw std::runtime_error("could not load player texture");
 	}
 
 	if (this->rightTexture.loadFromFile(MARIO_RIGHT_TEXTURE_PATH) == false) {
-		throw new std::runtime_error("could not load player texture");
+		throw std::runtime_error("could not load player texture");
 	}
 
 	if (this->leftRunningTexture.loadFromFile(MARIO_LEFT_RUNNING_TEXTURE_PATH) == false) {
-		throw new std::runtime_error("could not load player texture");
+		throw std::runtime_error("could not load player texture");
 	}
 
 	if (this->rightRunningTexture.loadFromFile(MARIO_RIGHT_RUNNING_TEXTURE_PATH) == false) {

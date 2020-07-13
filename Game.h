@@ -16,6 +16,7 @@ public:
 	void init();
 	virtual ~Game();
 
+	void run();
 	void run(size_t mapIndex);
 
 	static const unsigned int windowWidth;

@@ -21,7 +21,7 @@ Game::Game(std::vector<std::vector<std::string>> maps):
 	this->renderWindow.display();
 
 	if (this->font.loadFromFile(FONT_PATH) == false) {
-		throw new std::runtime_error("Could not load stats font.");
+		throw std::runtime_error("Could not load stats font.");
 	}
 
 	this->init();
@@ -53,6 +53,15 @@ void Game::init() {
 }
 
 Game::~Game(){}
+
+void Game::run() {
+
+	if (this->maps.size() == 0) {
+		throw std::runtime_error("No levels were loaded.");
+	}
+
+	this->run(0);
+}
 
 void Game::run(size_t mapIndex) {
 
@@ -91,10 +100,10 @@ void Game::run(size_t mapIndex) {
 	}
 
 	if (this->mario == nullptr)
-		throw new std::runtime_error("Player was not found in level.");
+		throw std::runtime_error("Player was not found in level.");
 
 	if (this->princess == nullptr)
-		throw new std::runtime_error("Princess was not found in level.");
+		throw std::runtime_error("Princess was not found in level.");
 
 	this->mainLoop();
 }
